@@ -268,3 +268,4 @@
 # l.add(23)
 # n = l.search(13)
 # print(n)
+# today is 7.19
