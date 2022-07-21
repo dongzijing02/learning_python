@@ -135,6 +135,7 @@ class BinaryTree(object):
                     tempList.reverse()
                     li = li + tempList
                 leftToRight = not leftToRight
+                tempList.reverse()
                 queue = tempList
                 tempList = []
 
