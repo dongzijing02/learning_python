@@ -116,18 +116,30 @@ class BinaryTree(object):
             li.append(vertex.value)
         return li
 
-    def level_order_traversal_2(self):
+    def level_order_traversal_zig_zag(self):
         queue = [self]
-        li = []
-        while len(queue) > 0:
-            vertex = queue.pop(-1)
-            print(vertex)
-            if vertex.right is not None:
-                queue.append(vertex.right)
-            if vertex.left is not None:
-                queue.append(vertex.left)
-            li.append(vertex.value)
-        return li
+        li = [self]
+        tempList = []
+        leftToRight = False
+        while len(queue) > 0 or len(tempList) > 0:
+            if len(queue) > 0:
+                top_node = queue.pop(0)
+                if top_node.left is not None:
+                    tempList.append(top_node.left)
+                if top_node.right is not None:
+                    tempList.append(top_node.right)
+            else:
+                if leftToRight:
+                    li = li + tempList
+                else:
+                    tempList.reverse()
+                    li = li + tempList
+                leftToRight = not leftToRight
+                tempList.reverse()
+                queue = tempList
+                tempList = []
+
+        return list(map(lambda x: x.value, li))
 
 
 tree = BinaryTree(1)
@@ -151,7 +163,7 @@ tree.left.right.right = BinaryTree(12)
 # tree2.left.left.left = BinaryTree(6)
 # tree2.left.right.right = BinaryTree(12)
 print(tree.level_order_traversal())
-print(tree.level_order_traversal_2())
+print(tree.level_order_traversal_zig_zag())
 
 # print(tree.is_same_with(tree2))
 # print(tree.is_symmetric(tree))
