@@ -149,8 +149,8 @@ class BinaryTree(object):
         if self.left is not None:
             L = self.left.find_the_minimum_depth()
         if self.right is not None:
-            R = self.right.find_the_minimum_depth() 
-        return min(L, R) + 1
+            R = self.right.find_the_minimum_depth():
+        return L + R + 1 if self.right is None or self.left is None else min(L, R) + 1
 
 
 tree = BinaryTree(1)
@@ -181,7 +181,7 @@ print(tree.find_the_minimum_depth())
 # print(tree.is_symmetric(tree))
 # print(tree.preorder_print())
 # print(tree.find(40))
-print(tree.get_height())
+# print(tree.get_height())
 # print(tree.get_node_count())
 # print(tree.count_leaves())
 
