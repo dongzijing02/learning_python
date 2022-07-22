@@ -80,6 +80,17 @@ class BinaryTree(object):
             r = self.right.find(value_to_find)
         return l or r
 
+    def get_height(self):
+        L = 0
+        R = 0
+        if self is None:
+            return 0
+        if self.left is not None:
+            L = self.left.get_height()
+        if self.right is not None:
+            R = self.right.get_height()
+        return max(L, R) + 1
+
     def count_leaves(self):
         l = 0
         r = 0
@@ -123,23 +134,12 @@ class BinaryTree(object):
                 else:
                     tempList.reverse()
                     li = li + tempList
+                    tempList.reverse()
                 leftToRight = not leftToRight
-                tempList.reverse()
                 queue = tempList
                 tempList = []
 
         return list(map(lambda x: x.value, li))
-
-    def get_height(self):
-        L = 0
-        R = 0
-        if self is None:
-            return 0
-        if self.left is not None:
-            L = self.left.get_height()
-        if self.right is not None:
-            R = self.right.get_height()
-        return max(L, R) + 1
 
     def find_the_minimum_depth(self):
         L = 0
@@ -153,7 +153,6 @@ class BinaryTree(object):
         return min(L, R) + 1
 
 
-
 tree = BinaryTree(1)
 tree.left = BinaryTree(4)
 tree.right = BinaryTree(5)
@@ -165,7 +164,6 @@ tree.left.left.left = BinaryTree(6)
 tree.left.right.right = BinaryTree(12)
 tree.right.right.right = BinaryTree(11)
 tree.right.left.right = BinaryTree(1)
-
 
 # tree2 = BinaryTree(1)
 # tree2.left = BinaryTree(4)
@@ -181,10 +179,9 @@ tree.right.left.right = BinaryTree(1)
 print(tree.find_the_minimum_depth())
 # print(tree.is_same_with(tree2))
 # print(tree.is_symmetric(tree))
-# T = tree.preorder_print()
-# print(T)
+# print(tree.preorder_print())
 # print(tree.find(40))
-# print(tree.get_height())
+print(tree.get_height())
 # print(tree.get_node_count())
 # print(tree.count_leaves())
 
