@@ -162,7 +162,7 @@ tree.right.left = BinaryTree(9)
 tree.right.right = BinaryTree(10)
 tree.left.left.left = BinaryTree(6)
 tree.left.right.right = BinaryTree(12)
-tree.right.right.right = BinaryTree(11)
+tree.right.right.right = BinaryTree(11) 
 tree.right.left.right = BinaryTree(1)
 
 # tree2 = BinaryTree(1)
