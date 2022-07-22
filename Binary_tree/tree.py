@@ -149,7 +149,7 @@ class BinaryTree(object):
         if self.left is not None:
             L = self.left.find_the_minimum_depth()
         if self.right is not None:
-            R = self.right.find_the_minimum_depth()
+            R = self.right.find_the_minimum_depth() 
         return min(L, R) + 1
 
 
