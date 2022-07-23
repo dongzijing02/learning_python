@@ -178,7 +178,7 @@ class BinaryTree(object):
         if self.right is not None:
             self.right.reverse_tree()
         self.right, self.left = self.left, self.right
-        # print(self.preorder_print())
+        # print(self.preorder_print()) 
         return self.preorder_print()
 
 
