@@ -173,17 +173,14 @@ class BinaryTree(object):
     def reverse_tree(self):
         if self is None:
             return None
-        if self.left is None and self.right is None:
-            return self
-        else:
+        new_tree = self
+        if self.left is not None:
             l = self.left.reverse_tree()
-            r = self.right.reverse_tree()
-            new_tree = self.value
             new_tree.right = l
+        if self.right is not None:
+            r = self.right.reverse_tree()
             new_tree.left = r
-
         return new_tree
-
 
 
 tree = BinaryTree(1)
@@ -210,8 +207,8 @@ tree.right.left.right = BinaryTree(1)
 # tree2.left.right.right = BinaryTree(12)
 # print(tree.level_order_traversal())
 # print(tree.level_order_traversal_zig_zag())
-print(tree.find_the_minimum_depth())
-print(tree.BFS_find_the_depth())
+# print(tree.find_the_minimum_depth())
+# print(tree.BFS_find_the_depth())
 print(tree.reverse_tree())
 # print(tree.is_same_with(tree2))
 # print(tree.is_symmetric(tree))
