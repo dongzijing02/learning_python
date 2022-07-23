@@ -173,14 +173,14 @@ class BinaryTree(object):
     def reverse_tree(self):
         if self is None:
             return None
-        new_tree = self
         if self.left is not None:
-            l = self.left.reverse_tree()
-            new_tree.right = l
+            self.left.reverse_tree()
         if self.right is not None:
-            r = self.right.reverse_tree()
-            new_tree.left = r
-        return new_tree
+            self.right.reverse_tree()
+        self.right, self.left = self.left, self.right
+        # print(self.preorder_print())
+        return self.preorder_print()
+
 
 
 tree = BinaryTree(1)
