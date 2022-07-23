@@ -149,8 +149,41 @@ class BinaryTree(object):
         if self.left is not None:
             L = self.left.find_the_minimum_depth()
         if self.right is not None:
-            R = self.right.find_the_minimum_depth():
+            R = self.right.find_the_minimum_depth()
         return L + R + 1 if self.right is None or self.left is None else min(L, R) + 1
+
+    def BFS_find_the_depth(self):
+        queue = [self]
+        depth = 0
+        if self is None:
+            return depth
+        while self is not None and len(queue) > 0:
+            depth += 1
+            for i in range(0, len(queue)):
+                top = queue.pop()
+                if top.left is not None:
+                    queue.append(top.left)
+                if top.right is not None:
+                    queue.append(top.right)
+                if top.left is None and top.right is None:
+                    return depth + 1
+
+        return depth
+
+    def reverse_tree(self):
+        if self is None:
+            return None
+        if self.left is None and self.right is None:
+            return self
+        else:
+            l = self.left.reverse_tree()
+            r = self.right.reverse_tree()
+            new_tree = self.value
+            new_tree.right = l
+            new_tree.left = r
+
+        return new_tree
+
 
 
 tree = BinaryTree(1)
@@ -162,8 +195,9 @@ tree.right.left = BinaryTree(9)
 tree.right.right = BinaryTree(10)
 tree.left.left.left = BinaryTree(6)
 tree.left.right.right = BinaryTree(12)
-tree.right.right.right = BinaryTree(11) 
+tree.right.right.right = BinaryTree(11)
 tree.right.left.right = BinaryTree(1)
+
 
 # tree2 = BinaryTree(1)
 # tree2.left = BinaryTree(4)
@@ -177,6 +211,8 @@ tree.right.left.right = BinaryTree(1)
 # print(tree.level_order_traversal())
 # print(tree.level_order_traversal_zig_zag())
 print(tree.find_the_minimum_depth())
+print(tree.BFS_find_the_depth())
+print(tree.reverse_tree())
 # print(tree.is_same_with(tree2))
 # print(tree.is_symmetric(tree))
 # print(tree.preorder_print())
