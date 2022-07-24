@@ -157,6 +157,7 @@ class BinaryTree(object):
         depth = 0
         if self is None:
             return depth
+            
         while self is not None and len(queue) > 0:
             depth += 1
             for i in range(0, len(queue)):
