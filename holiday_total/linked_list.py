@@ -24,17 +24,31 @@ class LinkedList:
 
     def partlyReverseLinkedlist(self):
         current = self.head
-        temp = None
+        dummyHead = Node(0)
+        dummyHead.next = current
+        pre = dummyHead
         if self.head is None:
             return None
         while current is not None:
-            next1 = current.next
-            next2 = next1.next
-            next3 = next2.next
-            current.next = temp
-            next1.next = current
+            next_node = current.next
+            next2_node = next_node.next
+            if next2_node is not None:
+                pre.next = next_node
+                current.next = next2_node
+                next_node.next = current
+                pre = current
+                current = next2_node
+                next_node = current.next
+                next2_node = next_node.next
+            if next2_node is None:
+                pre.next = next_node
+                current.next = next2_node
+                next_node.next = current
+                pre = current
+                current = next2_node
+                # next_node = current.next
 
-
+        return llist.printList()
 
     def printList(self):  # 打印链表
         temp = self.head
@@ -84,16 +98,14 @@ class LinkedList:
     #     temp = None
 
 
-if __name__ == '__main__':
-    llist = LinkedList()
-    llist.head = Node(1)
-    second = Node(2)
-    third = Node(3)
-    fourth = Node(4)
-    fifth = Node(5)
-    llist.head.next = second  # 建立指针使前一个指向后一个
-    second.next = third
-    third.next = fourth
-    fourth.next = fifth
+llist = LinkedList()
+llist.head = Node(1)
+second = Node(2)
+third = Node(3)
+fourth = Node(4)
+llist.head.next = second  # 建立指针使前一个指向后一个
+second.next = third
+third.next = fourth
 # print(llist.printList())
-print(llist.reverseLinkList())
+# print(llist.reverseLinkList())
+print(llist.partlyReverseLinkedlist())
