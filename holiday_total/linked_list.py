@@ -5,24 +5,36 @@ class Node:
 
 
 class LinkedList:
-    # Function to initialize head
     def __init__(self):
         self.head = None
 
-    def ReverseLinkList(self):
+    def reverseLinkList(self):
+        current = self.head
+        temp = None
         if self.head is None:
             return None
-        while self.head is not None:
-            if self.next is None:
-                return self.head
-            if self.head.next is not None:
-                cur = self.head
-                self.head = self.head.next
-                self.head.next = self.head.next.next
-                self.head.next = cur
-        return self.head
+        while current is not None:
+            next_node = current.next
+            current.next = temp
+            temp = current
+            current = next_node
+        return llist.printList()
 
-    def printList(self):  # 建立链表
+    def partlyReverseLinkedlist(self):
+        current = self.head
+        temp = None
+        if self.head is None:
+            return None
+        while current is not None:
+            next1 = current.next
+            next2 = next1.next
+            next3 = next2.next
+            current.next = temp
+            next1.next = current
+
+
+
+    def printList(self):  # 打印链表
         temp = self.head
         while temp:
             print(temp.data)
@@ -75,8 +87,11 @@ if __name__ == '__main__':
     llist.head = Node(1)
     second = Node(2)
     third = Node(3)
+    fourth = Node(4)
+    fifth = Node(5)
     llist.head.next = second  # 建立指针使前一个指向后一个
-    second.next = third:
-
-print(llist.printList())
-print(llist.ReverseLinkList())
+    second.next = third
+    third.next = fourth
+    fourth.next = fifth
+# print(llist.printList())
+print(llist.reverseLinkList())

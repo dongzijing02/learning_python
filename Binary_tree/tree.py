@@ -182,7 +182,6 @@ class BinaryTree(object):
     #     # print(self.preorder_print())
     #     return self.preorder_print()
 
-    # def
 
 
 tree = BinaryTree(1)
