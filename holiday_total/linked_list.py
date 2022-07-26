@@ -18,6 +18,8 @@ class LinkedList:
             current.next = temp
             temp = current
             current = next_node
+        self.head = temp
+
         return llist.printList()
 
     def partlyReverseLinkedlist(self):
