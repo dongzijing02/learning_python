@@ -46,9 +46,8 @@ class LinkedList:
                 next_node.next = current
                 pre = current
                 current = next2_node
-                # next_node = current.next
 
-        return llist.printList()
+        return dummyHead.next
 
     def printList(self):  # 打印链表
         temp = self.head
@@ -63,7 +62,7 @@ class LinkedList:
     #
     # # 在指定节点后插入
     # def insert(self, prev_node, new_data):
-    #     if prev_node is None:
+    #     if prev_node is None: 
     #         return
     #     new_node = Node(new_data)
     #     new_node.next = prev_node.next
@@ -106,6 +105,7 @@ fourth = Node(4)
 llist.head.next = second  # 建立指针使前一个指向后一个
 second.next = third
 third.next = fourth
-# print(llist.printList())
 # print(llist.reverseLinkList())
-print(llist.partlyReverseLinkedlist())
+print(llist.printList())
+llist.partlyReverseLinkedlist()
+print(llist.printList())
