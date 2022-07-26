@@ -40,7 +40,7 @@ class LinkedList:
                 current = next2_node
                 next_node = current.next
                 next2_node = next_node.next
-            if next2_node is None:
+            if next2_node is None: 
                 pre.next = next_node
                 current.next = next2_node
                 next_node.next = current
